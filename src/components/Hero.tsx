@@ -1,11 +1,26 @@
-import React from 'react';
-import { ArrowDown, Cpu, Sparkles, Terminal, Disc, Zap, Radio } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowDown, Cpu, Sparkles, Terminal, Disc, Zap, Radio, Box } from 'lucide-react';
+import hero80sImage from '../assets/images/hero_80s_synthwave_3d_1794328121699.jpg';
 
 interface HeroProps {
   onQuoteClick: () => void;
 }
 
 export const Hero: React.FC<HeroProps> = ({ onQuoteClick }) => {
+  const [currentImg, setCurrentImg] = useState<string>(hero80sImage);
+  const [imgErrorCount, setImgErrorCount] = useState<number>(0);
+
+  const handleImageError = () => {
+    if (imgErrorCount === 0) {
+      setCurrentImg('/images/hero_80s_synthwave_3d_1794328121699.jpg');
+      setImgErrorCount(1);
+    } else if (imgErrorCount === 1) {
+      setCurrentImg('/images/hero_3d_workshop_1794327037714.jpg');
+      setImgErrorCount(2);
+    } else {
+      setImgErrorCount(3);
+    }
+  };
   return (
     <section className="relative overflow-hidden border-b-2 border-fuchsia-500/40 bg-[#0d091a] pt-10 pb-16 lg:pt-16 lg:pb-24">
       {/* 80s Synthwave Perspective Laser Grid Backdrop */}
@@ -89,17 +104,36 @@ export const Hero: React.FC<HeroProps> = ({ onQuoteClick }) => {
           {/* Right Column: 80s Synthwave 3D Workshop Image Frame */}
           <div className="flex items-center justify-center lg:col-span-5">
             <div className="relative w-full rounded-2xl p-1 bg-gradient-to-b from-[#00f0ff] via-fuchsia-500 to-[#ff2a85] shadow-[0_0_35px_rgba(255,42,133,0.35)]">
-              <div className="relative overflow-hidden rounded-xl bg-[#090614]">
-                <img
-                  src="/src/assets/images/hero_80s_synthwave_3d_1794328121699.jpg"
-                  alt="Taller de impresión 3D ryouku 3D estilo ochentero synthwave con monitores CRT y luces neón"
-                  className="h-[360px] sm:h-[420px] lg:h-[460px] w-full object-cover object-center"
-                  referrerPolicy="no-referrer"
-                  loading="eager"
-                />
+              <div className="relative overflow-hidden rounded-xl bg-[#090614] min-h-[360px] flex items-center justify-center">
+                {imgErrorCount < 3 ? (
+                  <img
+                    src={currentImg}
+                    alt="Taller de impresión 3D ryouku 3D estilo ochentero synthwave con monitores CRT y luces neón"
+                    onError={handleImageError}
+                    className="h-[360px] sm:h-[420px] lg:h-[460px] w-full object-cover object-center"
+                    referrerPolicy="no-referrer"
+                    loading="eager"
+                  />
+                ) : (
+                  <div className="h-[360px] sm:h-[420px] lg:h-[460px] w-full flex flex-col items-center justify-center p-8 bg-gradient-to-b from-[#180f33] via-[#0d071d] to-[#080413] retro-grid relative">
+                    <div className="h-20 w-20 rounded-2xl bg-[#231549] border-2 border-[#00f0ff] text-[#00f0ff] flex items-center justify-center mb-4 shadow-[0_0_25px_rgba(0,240,255,0.6)]">
+                      <Cpu className="h-10 w-10 animate-pulse" />
+                    </div>
+                    <span className="font-display text-lg font-bold text-white tracking-widest">
+                      RYOUKU 3D LAB
+                    </span>
+                    <span className="font-arcade text-[10px] text-[#ff2a85] mt-2">
+                      VOLTAIC 1984 COREXY
+                    </span>
+                    <div className="mt-4 flex items-center gap-2 font-mono text-xs text-cyan-300">
+                      <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
+                      <span>SISTEMA DE IMPRESIÓN ACTIVO</span>
+                    </div>
+                  </div>
+                )}
 
                 {/* 80s VHS / Retro Monitor HUD Overlay */}
-                <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-[#00f0ff] bg-black/70 backdrop-blur-md px-3 py-1.5 rounded border border-cyan-500/40">
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-[11px] font-mono text-[#00f0ff] bg-black/75 backdrop-blur-md px-3 py-1.5 rounded border border-cyan-500/40">
                   <div className="flex items-center gap-1.5">
                     <span className="h-2 w-2 rounded-full bg-red-500 animate-pulse" />
                     <span className="font-arcade text-[9px] text-red-400">REC</span>

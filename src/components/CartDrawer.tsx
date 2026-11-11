@@ -103,6 +103,12 @@ export const CartDrawer: React.FC = () => {
                             <img
                               src={item.product.imagen_url}
                               alt={item.product.nombre}
+                              onError={(e) => {
+                                (e.currentTarget as HTMLElement).style.display = 'none';
+                                if (e.currentTarget.parentElement) {
+                                  e.currentTarget.parentElement.innerHTML = '<span class="text-[#00f0ff] font-arcade text-[10px]">3D</span>';
+                                }
+                              }}
                               className="h-full w-full object-cover object-center"
                               referrerPolicy="no-referrer"
                             />

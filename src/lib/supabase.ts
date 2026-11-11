@@ -47,7 +47,7 @@ export const FALLBACK_PRODUCTOS: Producto[] = [
     color: "Negro & Naranja",
     precio: 12500,
     stock: 8,
-    imagen_url: "/src/assets/images/macro_3d_layers_1794327049307.jpg",
+    imagen_url: "/images/macro_3d_layers_1794327049307.jpg",
     descripcion: "Mecanismo cinemático funcional de engranajes planetarios con rodamientos sellados. Pieza técnica de exhibición antiestrés y prototipado mecánico."
   },
   {
@@ -77,7 +77,7 @@ export const FALLBACK_PRODUCTOS: Producto[] = [
     color: "Negro Mate",
     precio: 9500,
     stock: 10,
-    imagen_url: "/src/assets/images/macro_3d_layers_1794327049307.jpg",
+    imagen_url: "/images/macro_3d_layers_1794327049307.jpg",
     descripcion: "Base robusta con contrapeso interior y almohadilla de silicona para no deformar la vincha de auriculares inalámbricos o de estudio."
   }
 ];

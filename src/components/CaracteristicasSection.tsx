@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Layers, ShieldCheck, Cog, Gauge, CheckCircle2, Disc } from 'lucide-react';
+import { Layers, ShieldCheck, Cog, Gauge, CheckCircle2, Disc, Box } from 'lucide-react';
+import retroArtifactImage from '../assets/images/retro_80s_3d_artifact_1794328135637.jpg';
 
 interface MaterialSpec {
   nombre: string;
@@ -48,6 +49,21 @@ const MATERIALES: MaterialSpec[] = [
 export const CaracteristicasSection: React.FC = () => {
   const [selectedMaterialIdx, setSelectedMaterialIdx] = useState(1);
 
+  const [artifactImg, setArtifactImg] = useState<string>(retroArtifactImage);
+  const [artifactErrorCount, setArtifactErrorCount] = useState<number>(0);
+
+  const handleArtifactError = () => {
+    if (artifactErrorCount === 0) {
+      setArtifactImg('/images/retro_80s_3d_artifact_1794328135637.jpg');
+      setArtifactErrorCount(1);
+    } else if (artifactErrorCount === 1) {
+      setArtifactImg('/images/macro_3d_layers_1794327049307.jpg');
+      setArtifactErrorCount(2);
+    } else {
+      setArtifactErrorCount(3);
+    }
+  };
+
   return (
     <section id="caracteristicas" className="relative scroll-mt-20 py-16 sm:py-24 border-t-2 border-fuchsia-500/40 bg-[#090614]">
       {/* 80s Laser Grid */}
@@ -74,14 +90,29 @@ export const CaracteristicasSection: React.FC = () => {
           {/* Left Column: 80s Retro Mechanical Cassette Image */}
           <div className="lg:col-span-5">
             <div className="relative rounded-2xl p-1 bg-gradient-to-tr from-[#ff2a85] via-fuchsia-600 to-[#00f0ff] shadow-[0_0_35px_rgba(0,240,255,0.25)]">
-              <div className="relative overflow-hidden rounded-xl bg-[#090614]">
-                <img
-                  src="/src/assets/images/retro_80s_3d_artifact_1794328135637.jpg"
-                  alt="Dispositivo mecánico de casete y engranajes 3D estilo 80s synthwave con neón cian y magenta"
-                  className="h-[380px] w-full object-cover object-center"
-                  referrerPolicy="no-referrer"
-                  loading="lazy"
-                />
+              <div className="relative overflow-hidden rounded-xl bg-[#090614] min-h-[360px] flex items-center justify-center">
+                {artifactErrorCount < 3 ? (
+                  <img
+                    src={artifactImg}
+                    alt="Dispositivo mecánico de casete y engranajes 3D estilo 80s synthwave con neón cian y magenta"
+                    onError={handleArtifactError}
+                    className="h-[380px] w-full object-cover object-center"
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="h-[380px] w-full flex flex-col items-center justify-center p-8 bg-gradient-to-b from-[#180f33] via-[#0d071d] to-[#080413] retro-grid relative">
+                    <div className="h-16 w-16 rounded-2xl bg-[#231549] border-2 border-[#ff2a85] text-[#ff2a85] flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(255,42,133,0.5)]">
+                      <Box className="h-8 w-8 stroke-[1.8]" />
+                    </div>
+                    <span className="font-display text-sm font-bold text-white tracking-wider">
+                      MECANISMO 3D PRECISO
+                    </span>
+                    <span className="font-arcade text-[10px] text-[#00f0ff] mt-1.5">
+                      TOLERANCIA ±0.15MM
+                    </span>
+                  </div>
+                )}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
                 <div className="absolute bottom-3 left-3 right-3 p-3 bg-black/85 backdrop-blur-md border border-fuchsia-500/50 rounded-lg">
