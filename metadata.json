@@ -1,0 +1,6 @@
+{
+  "name": "ryouku 3D - Taller de Impresión 3D y Tienda Online",
+  "description": "Tienda oficial de ryouku 3D: catálogo de productos impresos en 3D, filamentos PLA, PETG y resina, cotizaciones personalizadas y pedidos directos por WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

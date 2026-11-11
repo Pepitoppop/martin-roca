@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Audiowide", cursive, sans-serif;
+  --font-tech: "Chakra Petch", sans-serif;
+  --font-arcade: "'Press Start 2P'", monospace;
+  --font-sans: "Plus Jakarta Sans", "Chakra Petch", sans-serif;
+}
+
+:root {
+  font-family: "Chakra Petch", "Plus Jakarta Sans", sans-serif;
+  color-scheme: dark;
+}
+
+h1, h2, h3, .font-display {
+  font-family: "Audiowide", cursive, sans-serif;
+}
+
+.font-arcade {
+  font-family: 'Press Start 2P', monospace;
+}
+
+.font-tech {
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+/* 80s Synthwave Perspective Laser Grid */
+.retro-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 42, 133, 0.12) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.retro-grid-dense {
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 42, 133, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* 80s Neon Text Glows */
+.neon-glow-pink {
+  text-shadow: 0 0 7px #ff2a85, 0 0 15px rgba(255, 42, 133, 0.6), 0 0 25px rgba(255, 42, 133, 0.4);
+}
+
+.neon-glow-cyan {
+  text-shadow: 0 0 7px #00f0ff, 0 0 15px rgba(0, 240, 255, 0.6), 0 0 25px rgba(0, 240, 255, 0.4);
+}
+
+.neon-glow-yellow {
+  text-shadow: 0 0 7px #facc15, 0 0 15px rgba(250, 204, 21, 0.6);
+}
+
+/* Neon Box Glows */
+.neon-border-pink {
+  border-color: #ff2a85;
+  box-shadow: 0 0 14px rgba(255, 42, 133, 0.35), inset 0 0 8px rgba(255, 42, 133, 0.15);
+}
+
+.neon-border-cyan {
+  border-color: #00f0ff;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.35), inset 0 0 8px rgba(0, 240, 255, 0.15);
+}
+
+/* 80s Chrome Gradient Text */
+.chrome-text {
+  background: linear-gradient(180deg, #ffffff 0%, #b8c6db 45%, #f5f7fa 55%, #606f7b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* CRT Scanline Effect (subtle & toggleable) */
+.scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  pointer-events: none;
+}
+
+/* Custom 80s Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090614;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #ff2a85, #00f0ff);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #ff5ea2, #53f6ff);
+}
